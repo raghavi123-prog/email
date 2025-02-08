@@ -1,0 +1,29 @@
+name: Email Sender Automation
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 9 * * *" # Runs every day at 9 AM UTC
+
+jobs:
+  send_emails:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install Dependencies
+        run: pip install sendgrid
+
+      - name: Run Email Sender Script
+        env:
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+        run: python email_sender.py
+
