@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "0 9 * * *" # Runs every day at 9 AM UTC
+    - cron: "0 9 * * *"  # Runs every day at 9 AM UTC
 
 jobs:
   send_emails:
@@ -20,9 +20,11 @@ jobs:
           python-version: 3.9
 
       - name: Install Dependencies
-        run: pip install sendgrid
+        run: |
+          pip install pandas
+          pip install sendgrid
 
-      - name: Run Email Sender Script
+      - name: Run Email Script
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
-        run: python email
+        run: python email  # No .py extension, just the name 'email'
