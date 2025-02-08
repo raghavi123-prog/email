@@ -27,4 +27,4 @@ jobs:
       - name: Run Email Script
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
-        run: python email.py  # No .py extension, just the name 'email'
+        run: python send_email.py # No .py extension, just the name 'email'
