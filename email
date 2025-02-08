@@ -1,5 +1,5 @@
 import sendgrid  
-from sendgrid.helpers.mail import Mail  
+from sendgrid.helpers.mail import Mail
 import pandas as pd  
 
 sg = sendgrid.SendGridAPIClient(api_key="YOUR_SENDGRID_API_KEY")  
